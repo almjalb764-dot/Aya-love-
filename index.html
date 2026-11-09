@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>إلى Aya ❤️</title>
+<style>
+* { box-sizing: border-box; }
+body {
+  margin: 0; min-height: 100vh; font-family: Tahoma, Arial;
+  color: white;
+  background: radial-gradient(ellipse at center, #68101d, #2b0712, #090307);
+  text-align: center;
+}
+.card {
+  width: 92%; max-width: 550px; margin: 35px auto; padding: 30px 20px;
+  border: 1px solid #ff536d66; border-radius: 28px; background: #ffffff12;
+  box-shadow: 0 0 35px #ff001f44;
+}
+.date { color: #ffb2b9; letter-spacing: 5px; }
+h1 { font-size: 42px; text-shadow: 0 0 20px #ff173d; }
+p { line-height: 2; }
+.gift {
+  font-size: 110px; cursor: pointer; margin: 30px 0;
+  animation: float 3s infinite ease-in-out;
+}
+@keyframes float { 50% { transform: translateY(-15px); } }
+#bouquet {
+  display: none; width: 100%; max-width: 420px; border-radius: 20px;
+  box-shadow: 0 0 35px #ff102f; margin: 20px auto;
+}
+button {
+  border: none; border-radius: 30px; padding: 14px 25px;
+  background: linear-gradient(110deg,#ffb3bd,#f04460);
+  color: #401018; font-size: 16px; font-weight: bold;
+  cursor: pointer; margin: 10px;
+}
+#surprise { display: none; width: 100%; margin-top: 20px; }
+video { width: 100%; border-radius: 18px; background: #000; }
+.letter {
+  display: none; text-align: right; padding: 20px; line-height: 2.2;
+  background: #160409cc; border-radius: 18px; margin-top: 20px;
+  border: 1px solid #ff647b66; white-space: pre-line;
+}
+footer { color: #dba8bb; margin-top: 25px; font-size: 13px; }
+</style>
+</head>
+<body>
+<audio id="music" autoplay loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card">
+  <div class="date">11 • 11 • 2026</div>
+  <h1>إلى Aya ❤️</h1>
+  <p>في يوم الورد... ليكي إنتِ 🌹<br>عندي ليكي مفاجأة صغيرة.</p>
+
+  <div class="gift" id="gift" onclick="openGift()">🎁</div>
+  <p id="hint">اضغطي على الهدية وافتحي مفاجأتك 💝</p>
+
+  <img id="bouquet" src="bouquet.png" alt="بوكيه ورد Aya">
+  <br>
+
+  <button id="letterBtn" hidden onclick="openLetter()">افتحي رسالتي يا Aya 💌</button>
+  <div class="letter" id="letter">يا Aya ❤️
+
+يمكن الورد بيذبل مع الوقت،
+لكن في حاجات حلوة بتفضل في القلب.
+
+حبيت أقدملك البوكيه ده في يوم 11/11،
+عشان أقولك إنك تستاهلي كل حاجة جميلة.
+
+أتمنى أيامك كلها تكون فرحة وراحة،
+وتفضلي دايمًا مبسوطة.
+
+<b>من شخص بيحب يفرّحك ❤️</b></div>
+
+  <button id="videoBtn" hidden onclick="openVideo()">شوفي المفاجأة يا Aya 💌</button>
+  <div id="surprise">
+    <video id="myVideo" controls playsinline preload="metadata">
+      <source src="1000464135.mp4" type="video/mp4">
+      المتصفح لا يدعم تشغيل الفيديو.
+    </video>
+  </div>
+
+  <footer>هدية مخصوص ليوم 11/11 🌹</footer>
+</div>
+
+<script>
+const music = document.getElementById("music");
+
+function startMusic() {
+  music.play().catch(() => {
+    // بعض المتصفحات تمنع التشغيل التلقائي بالصوت قبل أول تفاعل من المستخدم.
+  });
+}
+window.addEventListener("load", startMusic);
+document.addEventListener("click", startMusic, { once: true });
+
+function openGift() {
+  document.getElementById("gift").style.display = "none";
+  document.getElementById("hint").innerText = "كل الورد ده عشانك يا Aya ❤️";
+  document.getElementById("bouquet").style.display = "block";
+  document.getElementById("letterBtn").hidden = false;
+  document.getElementById("videoBtn").hidden = false;
+}
+
+function openLetter() {
+  const letter = document.getElementById("letter");
+  letter.style.display = letter.style.display === "block" ? "none" : "block";
+}
+
+function openVideo() {
+  const box = document.getElementById("surprise");
+  const video = document.getElementById("myVideo");
+  box.style.display = "block";
+  video.play().catch(() => {});
+  box.scrollIntoView({behavior: "smooth"});
+}
+</script>
+</body>
+</html>
